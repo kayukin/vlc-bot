@@ -18,8 +18,8 @@ public class VlcBot extends TelegramLongPollingBot {
     private final String botToken;
 
     public VlcBot(VlcClient vlcClient,
-                  @Value("bot.username") String botUsername,
-                  @Value("bot.token") String botToken) {
+                  @Value("${bot.username}") String botUsername,
+                  @Value("${bot.token}") String botToken) {
         this.vlcClient = vlcClient;
         this.botUsername = botUsername;
         this.botToken = botToken;
