@@ -2,6 +2,7 @@ package com.kayukin.vlcbot;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResourceAccessException;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -13,19 +14,25 @@ import java.net.URL;
 @Slf4j
 public class VlcBot extends TelegramLongPollingBot {
     private final VlcClient vlcClient;
+    private final String botUsername;
+    private final String botToken;
 
-    public VlcBot(VlcClient vlcClient) {
+    public VlcBot(VlcClient vlcClient,
+                  @Value("bot.username") String botUsername,
+                  @Value("bot.token") String botToken) {
         this.vlcClient = vlcClient;
+        this.botUsername = botUsername;
+        this.botToken = botToken;
     }
 
     @Override
     public String getBotUsername() {
-        return "kayukin_vlc_bot";
+        return botUsername;
     }
 
     @Override
     public String getBotToken() {
-        return "1538659587:AAEgx6exPb3TlRXJ2V2d5gPpVjWHEj0U1Wc";
+        return botToken;
     }
 
     @SneakyThrows
