@@ -12,7 +12,7 @@ import java.awt.*;
 import java.net.URL;
 
 @Component
-@ConditionalOnExpression("#{T(java.awt.SystemTray).supported()}")
+@ConditionalOnExpression("#{T(java.awt.SystemTray).isSupported()}")
 public class BotTrayIcon extends TrayIcon implements DisposableBean {
 
     private static final String IMAGE_PATH = "/spy-bot.png";
