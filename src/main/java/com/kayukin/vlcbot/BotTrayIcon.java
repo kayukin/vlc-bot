@@ -2,6 +2,7 @@ package com.kayukin.vlcbot;
 
 import com.kayukin.vlcbot.ShutdownListener.ShutdownEvent;
 import org.springframework.beans.factory.DisposableBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import java.awt.*;
 import java.net.URL;
 
 @Component
+@ConditionalOnExpression("#{T(java.awt.SystemTray).isSupported()}")
 public class BotTrayIcon extends TrayIcon implements DisposableBean {
 
     private static final String IMAGE_PATH = "/spy-bot.png";
